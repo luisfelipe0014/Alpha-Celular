@@ -230,6 +230,19 @@
       "inHomePage": false
     },
     {
+      "name": "Calculator",
+      "pt_BR__name": "Calculadora",
+      "fr_FR__name": "Calculator",
+      "en_US__name": "Calculator",
+      "cs_CZ__name": "Calculator",
+      "de_DE__name": "Calculator",
+      "pl_PL__name": "Calculator",
+      "es_ES__name": "Calculator",
+      "icons": "/html/static/img/icons_app/calculadora.png",
+      "routeName": "calculator",
+      "inHomePage": false
+    },
+    {
       "name": "Bourse",
       "pt_BR__name": "Bolsa de Valores",
       "fr_FR__name": "Bourse",
@@ -320,6 +333,7 @@
       "APP_PHONE_CALL_IGNORE": "Ignorée",
 			"APP_BANK_TITLE": "Banco",
       "APP_BOURSE_TITLE": "Bolsa de Valores",
+      "APP_CALCULATOR_TITLE": "Calculadora",
       "APP_CONTACT_TITLE": "Contatos",
 			"APP_CONTACT_NEW": "Adicionar",
 			"APP_CONTACT_EDIT": "Editar Contato",
@@ -1022,7 +1036,8 @@
       "APP_PHONE_MENU_CONTACTS": "Contactos",
       "APP_PHONE_ENTER_NUMBER": "Introduzca un número",
       "APP_BANK_TITLE": "Wallet",
-      "APP_BOURSE_TITLE": "Bolsa de valores",
+      "APP_BOURSE_TITLE": "Bolsa de Valores",
+      "APP_CALCULATOR_TITLE": "Calculadora",
       "APP_CONTACT_TITLE": "Contactos",
       "APP_CONTACT_NEW": "Nuevo contacto",
       "APP_CONTACT_EDIT": "Cambiar el contacto",

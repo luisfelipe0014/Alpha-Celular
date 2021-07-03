@@ -26,6 +26,7 @@ const TwitterScreen = () => import('@/components/twitter/TwitterScreen')
 
 const Parametre = () => import('@/components/parametre/Parametre')
 const Bank = () => import('@/components/Bank/Bank')
+const Calculator = () => import('@/components/calculator/Calculator')
 const Bourse = () => import('@/components/Bourse/Bourse')
 const Photo = () => import('@/components/Photo/Photo')
 
@@ -78,6 +79,10 @@ export default new Router({
       path: '/photo',
       name: 'photo',
       component: Photo
+    }, {
+      path: '/calculator',
+      name: 'calculator',
+      component: Calculator
     }, {
       path: '/paramtre',
       name: 'parametre',
