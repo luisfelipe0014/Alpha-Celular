@@ -1,5 +1,5 @@
 {
-  "currency": "USD",
+  "currency": "BRL",
   "reseau": "Rewritten",
   "warningMessageCount": 250,
   "themeColor": "#007aff",
@@ -91,7 +91,7 @@
           "title": "Send a message",
           "eventName": "esx_addons_gcphone:call",
           "type": {
-            "number": "police"
+            "number": "Ambulância"
           }
         },
         {
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "display": "Ambulance",
+      "display": "Ambulância",
       "backgroundColor": "red",
       "icon": "/html/static/img/icons_app/lsfd.png",
       "subMenu": [
@@ -112,7 +112,7 @@
           "title": "Send a message",
           "eventName": "esx_addons_gcphone:call",
           "type": {
-            "number": "ambulance"
+            "number": "119"
           }
         }
       ]
@@ -133,19 +133,19 @@
   ],
   "defaultContacts": [
     {
-      "number": "ambulance",
-      "display": "Ambulance",
+      "number": "Ambulância",
+      "display": "Ambulância",
       "backgroundColor": "red",
       "icon": "/html/static/img/icons_app/lsfd.png"
     },
     {
-      "number": "police",
-      "display": "Police",
+      "number": "Policia",
+      "display": "Policia",
       "backgroundColor": "blue",
       "icon": "/html/static/img/icons_app/policia.png"
     },
     {
-      "number": "taxi",
+      "number": "Taxi",
       "display": "Taxi",
       "backgroundColor": "yellow"
     }
@@ -164,7 +164,7 @@
       "inHomePage": true
     },
     {
-      "name": "Phone",
+      "name": "Telefone",
       "pt_BR__name": "Telefone",
       "fr_FR__name": "Téléphone",
       "cs_CZ__name": "Telefon",
@@ -190,10 +190,10 @@
       "inHomePage": true
     },
     {
-      "name": "Messages",
-      "pt_BR__name": "Messages",
-      "fr_FR__name": "Messages",
-      "en_US__name": "Messages",
+      "name": "Whatsapp",
+      "pt_BR__name": "Whatsapp",
+      "fr_FR__name": "Whatsapp",
+      "en_US__name": "Whatsapp",
       "cs_CZ__name": "Zprávy",
       "de_DE__name": "Nachrichten",
       "pl_PL__name": "Wiadomości",
@@ -204,7 +204,7 @@
       "puceRef": "nbMessagesUnread"
     },
     {
-      "name": "Settings",
+      "name": "Ajustes",
       "pt_BR__name": "Configs",
       "fr_FR__name": "Paramètres",
       "en_US__name": "System",
@@ -217,7 +217,7 @@
       "inHomePage": false
     },
     {
-      "name": "Bank",
+      "name": "Wallet",
       "pt_BR__name": "Banco",
       "fr_FR__name": "Wallet",
       "en_US__name": "Wallet",
@@ -230,20 +230,20 @@
       "inHomePage": false
     },
     {
-      "name": "Calculator",
+      "name": "Calculadora",
       "pt_BR__name": "Calculadora",
-      "fr_FR__name": "Calculator",
-      "en_US__name": "Calculator",
-      "cs_CZ__name": "Calculator",
-      "de_DE__name": "Calculator",
-      "pl_PL__name": "Calculator",
-      "es_ES__name": "Calculator",
+      "fr_FR__name": "Calculadora",
+      "en_US__name": "Calculadora",
+      "cs_CZ__name": "Calculadora",
+      "de_DE__name": "Calculadora",
+      "pl_PL__name": "Calculadora",
+      "es_ES__name": "Calculadora",
       "icons": "/html/static/img/icons_app/calculadora.png",
       "routeName": "calculator",
       "inHomePage": false
     },
     {
-      "name": "Bourse",
+      "name": "Bolsa",
       "pt_BR__name": "Bolsa de Valores",
       "fr_FR__name": "Bourse",
       "cs_CZ__name": "Burza",
@@ -267,13 +267,13 @@
       "routeName": "photo"
     },
     {
-      "name": "Reddit",
-      "pt_BR__name": "Reddit",
-      "fr_FR__name": "Reddit",
-      "en_US__name": "Reddit",
-      "de_DE__name": "Reddit",
-      "pl_PL__name": "Reddit",
-      "es_ES__name": "Reddit",
+      "name": "Tchat",
+      "pt_BR__name": "Tchat",
+      "fr_FR__name": "Tchat",
+      "en_US__name": "Tchat",
+      "de_DE__name": "Tchat",
+      "pl_PL__name": "Tchat",
+      "es_ES__name": "Tchat",
       "icons": "/html/static/img/icons_app/reddit.png",
       "routeName": "tchat"
     },
@@ -294,8 +294,8 @@
       "routeName": "9gag"
     },
     {
-      "name": "Racing",
-      "es_ES__name": "Carreras",
+      "name": "Corrida",
+      "es_ES__name": "Corrida",
       "icons": "/html/static/img/icons_app/races.png",
       "routeName": "racing"
     }
@@ -342,7 +342,7 @@
 			"APP_CONTACT_DELETE": "Apagar",
       "APP_CONTACT_LABEL_NAME": "Nome:",
 			"APP_CONTACT_LABEL_NUMBER": "Telefone:",
-      "APP_MESSAGE_TITLE": "Messages",
+      "APP_MESSAGE_TITLE": "Whatsapp",
 			"APP_MESSAGE_NEW_MESSAGE": "Adicionar",
 			"APP_MESSAGE_ERASE_CONVERSATION": "Apagar mensagem",
 			"APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Apagar conversa",
