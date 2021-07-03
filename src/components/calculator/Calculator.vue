@@ -235,7 +235,6 @@ export default {
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
-
 #screen {
     padding-top: 80px;
     font-size: 108px;
@@ -247,7 +246,6 @@ export default {
     font-family: "San Francisco", Helvetica, Arial, san-serif;
 
 }
-
 
 .button {
     width: 25%;
@@ -299,5 +297,4 @@ export default {
     width: 100%;
     background-color: #000000;
 }
-
 </style>
