@@ -16,6 +16,7 @@
       v-autofocus
       type="text"
       maxlength="64"
+      :disabled="validated ? disabled : ''"
     >
     <div class="buttons">
       <div

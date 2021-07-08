@@ -77,12 +77,12 @@ class PhoneAPI {
   }
 
   // === Gestion des contacts
-  async updateContact(id, display, phoneNumber) {
-    return this.post('updateContact', {id, display, phoneNumber})
+  async updateContact(id, display, phoneNumber,icon) {
+    return this.post('updateContact', {id, display, phoneNumber, icon})
   }
 
-  async addContact(display, phoneNumber) {
-    return this.post('addContact', {display, phoneNumber})
+  async addContact(display, phoneNumber,icon) {
+    return this.post('addContact', {display, phoneNumber, icon})
   }
 
   async deleteContact(id) {

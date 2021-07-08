@@ -1,5 +1,5 @@
 import PhoneAPI from './../../PhoneAPI'
-const LOCAL_NAME = 'gc_tchat_channels'
+const LOCAL_NAME = 'groups_zap'
 import {Howl} from 'howler'
 
 let TchatAudio = null
@@ -44,8 +44,8 @@ const actions = {
     }
     commit('TCHAT_ADD_MESSAGES', { message })
   },
-  tchatAddChannel ({ commit }, { channel }) {
-    commit('TCHAT_ADD_CHANNELS', { channel })
+  tchatAddChannel ({ commit }, { channel,icon }) {
+    commit('TCHAT_ADD_CHANNELS', { channel,icon })
   },
   tchatRemoveChannel ({ commit }, { channel }) {
     commit('TCHAT_REMOVES_CHANNELS', { channel })
@@ -63,9 +63,10 @@ const mutations = {
   TCHAT_SET_CHANNEL (state, { channel }) {
     state.currentChannel = channel
   },
-  TCHAT_ADD_CHANNELS (state, { channel }) {
+  TCHAT_ADD_CHANNELS (state, { channel,icon }) {
     state.channels.push({
-      channel
+      channel,
+      icon
     })
     localStorage[LOCAL_NAME] = JSON.stringify(state.channels)
   },

@@ -10,6 +10,10 @@ const MessagesList = () => import('@/components/messages/MessagesList')
 const Messages = () => import('@/components/messages/Messages')
 const MessageContactsSelect = () => import('@/components/messages/MessageContactsSelect')
 
+const WhatsappList = () => import('@/components/whatsapp/WhatsappList')
+const Whatsapp = () => import('@/components/whatsapp/Whatsapp')
+const WhatsappContactsSelect = () => import('@/components/whatsapp/WhatsappContactsSelect')
+
 const Appels = () => import('@/components/Appels/Appels')
 const AppelsActive = () => import('@/components/Appels/AppelsActive')
 const AppelsNumber = () => import('@/components/Appels/AppelsNumber')
@@ -54,6 +58,21 @@ export default new Router({
       component: Contact
     },
     {
+      path: '/whatsapp',
+      name: 'whatsapp',
+      component: WhatsappList
+    },
+    {
+      path: '/whatsapp/select',
+      name: 'whatsapp.selectcontact',
+      component: WhatsappContactsSelect
+    },
+    {
+      path: '/whatsapp/:number/:display',
+      name: 'whatsapp.view',
+      component: Whatsapp
+    }, 
+    {
       path: '/messages',
       name: 'messages',
       component: MessagesList
@@ -67,7 +86,8 @@ export default new Router({
       path: '/messages/:number/:display',
       name: 'messages.view',
       component: Messages
-    }, {
+    }, 
+    {
       path: '/bourse',
       name: 'bourse',
       component: Bourse

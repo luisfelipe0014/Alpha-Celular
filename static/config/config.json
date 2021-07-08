@@ -43,6 +43,7 @@
   "fileUploadService_Url": "https://discord.com/api/webhooks/840315231145426976/qMZA7XhJjk9pEHi_Qt8KmWk25BYXQnnTX8N_teFOvLNs_Zi91EsDGeIg4EgRV_gNF5CR",
   "fileUploadService_Field": "files[]",
   "background": {
+    "Padrão": "padrao.png",
     "Praia": "back000.jpg",
     "Deserto Branco": "back001.jpg",
     "Palmeiras": "back002.jpg",
@@ -53,8 +54,8 @@
     "Custom URL": "URL"
   },
   "background_default": {
-    "label": "Praia",
-    "value": "back000.jpg"
+    "Padrão": "Padrão",
+    "value": "padrao.png"
   },
   "coque": {
     "Gray": "grey.png",
@@ -172,7 +173,7 @@
       "de_DE__name": "Telefon",
       "pl_PL__name": "Telefon",
       "es_ES__name": "Teléfono",
-      "icons": "/html/static/img/icons_app/call.png",
+      "icons": "/html/static/img/icons_app/phone.png",
       "routeName": "appels",
       "inHomePage": true
     },
@@ -198,7 +199,20 @@
       "de_DE__name": "Nachrichten",
       "pl_PL__name": "Wiadomości",
       "es_ES__name": "Mensajes",
-      "icons": "/html/static/img/icons_app/sms.png",
+      "icons": "/html/static/img/icons_app/whatsapp.png",
+      "routeName": "whatsapp",
+      "puceRef": "nbwhatsappUnread"
+    },
+    {
+      "name": "Mensagens",
+      "pt_BR__name": "Mensagens",
+      "fr_FR__name": "Mensagens",
+      "en_US__name": "Mensagens",
+      "cs_CZ__name": "Zprávy",
+      "de_DE__name": "Nachrichten",
+      "pl_PL__name": "Wiadomości",
+      "es_ES__name": "Mensajes",
+      "icons": "/html/static/img/icons_app/messages.png",
       "routeName": "messages",
       "inHomePage": true,
       "puceRef": "nbMessagesUnread"
@@ -225,7 +239,7 @@
       "de_DE__name": "Wallet",
       "pl_PL__name": "Wallet",
       "es_ES__name": "Wallet",
-      "icons": "/html/static/img/icons_app/banco.png",
+      "icons": "/html/static/img/icons_app/bank.png",
       "routeName": "bank",
       "inHomePage": false
     },
@@ -238,7 +252,7 @@
       "de_DE__name": "Calculadora",
       "pl_PL__name": "Calculadora",
       "es_ES__name": "Calculadora",
-      "icons": "/html/static/img/icons_app/calculadora.png",
+      "icons": "/html/static/img/icons_app/calculator.png",
       "routeName": "calculator",
       "inHomePage": false
     },
@@ -250,7 +264,7 @@
       "en_US__name": "Stock Market",
       "de_DE__name": "Börse",
       "es_ES__name": "Bolsa",
-      "icons": "/html/static/img/icons_app/bourse1.png",
+      "icons": "/html/static/img/icons_app/bouse.png",
       "routeName": "bourse",
       "enabled": true
     },
@@ -263,18 +277,31 @@
       "de_DE__name": "Kamera",
       "pl_PL__name": "Kamera",
       "es_ES__name": "Cámara",
-      "icons": "/html/static/img/icons_app/photo.png",
+      "icons": "/html/static/img/icons_app/camera.png",
       "routeName": "photo"
     },
     {
-      "name": "Tchat",
-      "pt_BR__name": "Tchat",
-      "fr_FR__name": "Tchat",
-      "en_US__name": "Tchat",
-      "de_DE__name": "Tchat",
-      "pl_PL__name": "Tchat",
-      "es_ES__name": "Tchat",
-      "icons": "/html/static/img/icons_app/reddit.png",
+      "name": "Instagram",
+      "pt_BR__name": "Instagram",
+      "fr_FR__name": "Instagram",
+      "cs_CZ__name": "Instagram",
+      "en_US__name": "Instagram",
+      "de_DE__name": "Instagram",
+      "pl_PL__name": "Instagram",
+      "es_ES__name": "Instagram",
+      "icons": "/html/static/img/icons_app/instagram.png",
+      "routeName": "instagram"
+    },
+    {
+      "name": "Reddit",
+      "pt_BR__name": "reminders",
+      "fr_FR__name": "reminders",
+      "cs_CZ__name": "reminders",
+      "en_US__name": "reminders",
+      "de_DE__name": "reminders",
+      "pl_PL__name": "reminders",
+      "es_ES__name": "reminders",
+      "icons": "/html/static/img/icons_app/reminders.png",
       "routeName": "tchat"
     },
     {
@@ -287,17 +314,6 @@
       "es_ES__name": "Notas ",
       "routeName": "notes",
       "icons": "/html/static/img/icons_app/notes.png"
-    },
-    {
-      "name": "9GAG",
-      "icons": "/html/static/img/icons_app/9gag.png",
-      "routeName": "9gag"
-    },
-    {
-      "name": "Corrida",
-      "es_ES__name": "Corrida",
-      "icons": "/html/static/img/icons_app/races.png",
-      "routeName": "racing"
     }
   ],
   "defaultLanguage": "pt_BR",
@@ -342,7 +358,7 @@
 			"APP_CONTACT_DELETE": "Apagar",
       "APP_CONTACT_LABEL_NAME": "Nome:",
 			"APP_CONTACT_LABEL_NUMBER": "Telefone:",
-      "APP_MESSAGE_TITLE": "Whatsapp",
+      "APP_MESSAGE_TITLE": "Mensagens",
 			"APP_MESSAGE_NEW_MESSAGE": "Adicionar",
 			"APP_MESSAGE_ERASE_CONVERSATION": "Apagar mensagem",
 			"APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Apagar conversa",

@@ -148,7 +148,8 @@ export default {
         return {
           backgroundImage: `url(${data.icon})`,
           backgroundSize: 'cover',
-          color: 'rgba(0,0,0,0)'
+          color: 'rgba(0,0,0,0)',
+          borderRadius: '50%'
         }
       }
       return {

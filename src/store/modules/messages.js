@@ -83,7 +83,7 @@ if (process.env.NODE_ENV !== 'production') {
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
-    {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
+    {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 0, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
@@ -92,22 +92,11 @@ if (process.env.NODE_ENV !== 'production') {
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS: 244.21, -123.15', isRead: 1, owner: 0},
-    {id: 5, transmitter: 'police', time, message: 'Tu fait quoi?', isRead: 1, owner: 1},
-    {id: 6, transmitter: 'ambulance', time, message: 'Oui est toi ?', isRead: 1, owner: 1},
-    {id: 7, transmitter: '01', time, message: 'Salut sa va ?', isRead: 1, owner: 0},
-    {
-      id: 8,
-      transmitter: '01',
-      time,
-      message: 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
-      isRead: 0,
-      owner: 1
-    },
+    {id: 5, transmitter: 'Policia', time, message: 'Tu fait quoi?', isRead: 1, owner: 1},
+    {id: 6, transmitter: 'Ambulancia', time, message: 'Sim estou aqui ?', isRead: 1, owner: 1},
+    {id: 7, transmitter: 'John doe', time, message: 'https://i.imgur.com/gthahbs.png', isRead: 1, owner: 0},
+    {id: 8, transmitter: 'Apenas um Teste', time, message: 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', isRead: 0, owner: 1},
     {id: 9, transmitter: '01', time, message: 'GPS: -1034.5810546875, -2734.1027832031', isRead: 1, owner: 0},
-    {id: 44, transmitter: '01', time, message: 'https://i.imgur.com/gthahbs.png', isRead: 1, owner: 0},
-    {id: 10, transmitter: '02', time, message: 'Salut sa va ?', isRead: 1, owner: 0},
-    {id: 11, transmitter: '04', time, message: 'Salut sa va ?', isRead: 1, owner: 0},
-    {id: 12, transmitter: '04', time, message: 'Salut sa va ?', isRead: 1, owner: 0},
-    {id: 13, transmitter: '09', time, message: 'Tu sais pas !', isRead: 1, owner: 0}
+    {id: 10, transmitter: 'Zonzo', time, message: 'Salut sa va ?', isRead: 0, owner: 0}
   ]
 }

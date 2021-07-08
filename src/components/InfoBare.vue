@@ -36,7 +36,8 @@ export default {
   padding: 1px 20px 0 24px;
   width: 100%;
   color: white;
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  font-weight: 900;
   position: relative;
 }
 

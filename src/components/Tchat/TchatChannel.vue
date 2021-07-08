@@ -142,11 +142,12 @@ export default {
     async addChannelOption() {
       try {
         const rep = await Modal.CreateTextModal({limit: 20, title: this.IntlString('APP_DARKTCHAT_NEW_CHANNEL')})
+        let icon = 'https://media.discordapp.net/attachments/709493004431261738/862463370502471690/LOGO10.png'
         let channel = (rep || {}).text || ''
         channel = channel.toLowerCase().replace(/[^a-z]/g, '')
         if (channel.length > 0) {
           this.currentSelect = 0
-          this.tchatAddChannel({channel})
+          this.tchatAddChannel({channel, icon})
         }
       } catch (e) {
         await this.$phoneAPI.log(e)

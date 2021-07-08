@@ -10,11 +10,11 @@ const getters = {
 }
 
 const actions = {
-  updateContact(context, {id, display, number}) {
-    PhoneAPI.updateContact(id, display, number)
+  updateContact(context, {id, display, number, icon}) {
+    PhoneAPI.updateContact(id, display, number, icon)
   },
-  addContact(context, {display, number}) {
-    PhoneAPI.addContact(display, number)
+  addContact(context, {display, number, icon}) {
+    PhoneAPI.addContact(display, number, icon)
   },
   deleteContact(context, {id}) {
     PhoneAPI.deleteContact(id)
@@ -46,6 +46,7 @@ if (process.env.NODE_ENV !== 'production') {
     {
       id: 2,
       number: '336-4557',
+      icon: 'https://media.discordapp.net/attachments/653616138902569000/819597673283321886/logo.png?width=840&height=473',
       display: 'John doe'
     },
     {

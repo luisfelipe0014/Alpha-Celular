@@ -5,6 +5,7 @@ import createLogger from 'vuex/dist/logger';
 import phone from './modules/phone'
 import contacts from './modules/contacts'
 import messages from './modules/messages'
+import whatsapp from './modules/whatsapp'
 import appels from './modules/appels'
 import bank from './modules/bank'
 import notes from './modules/notes'
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     phone,
     contacts,
     messages,
+    whatsapp,
     appels,
     bank,
     bourse,
