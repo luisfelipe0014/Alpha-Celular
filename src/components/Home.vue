@@ -7,7 +7,9 @@
       'deblur' : doDeblur,
     }"
   >
-    <InfoBare />
+    <InfoBare 
+      style="color: #fff"
+    />
     <span
       v-if="notification"
       class="notificationMess"
@@ -369,18 +371,29 @@ export default {
   display: flex;
   padding: 0px;
   /* width: 100%; */
-  bottom: 6px;
+  bottom: 14px;
   left: 11px;
   position: absolute;
   align-items: flex-end;
   flex-flow: row;
   flex-wrap: wrap;
-  margin-bottom: 3px;
   justify-content: space-between;
   transition: all 0.5s ease-in-out;
-  background: rgba(0,0,0,0.2);
-  border-radius: 1vw;
+  background: rgb(255 255 255 / 15%);
+  border-radius: 25px;
 }
+/* .home_buttons:before {
+  content: "";
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  transition: all 0.5s ease-in-out;
+  background: rgb(255 255 255 / 20%);
+  border-radius: 25px;
+  filter: blur(5px);
+} */
 
 button {
   position: relative;

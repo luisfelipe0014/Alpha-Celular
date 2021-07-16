@@ -60,6 +60,7 @@ export default new Router({
     {
       path: '/whatsapp',
       name: 'whatsapp',
+      meta: { transition: 'slide-right' },
       component: WhatsappList
     },
     {

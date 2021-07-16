@@ -60,6 +60,10 @@ class PhoneAPI {
     return this.post('sendMessage', {phoneNumber, message})
   }
 
+  async sendWhatsapp(phoneNumber, group, message) {
+    return this.post('sendMessage', {phoneNumber, group, message})
+  }
+
   async deleteMessage(id) {
     return this.post('deleteMessage', {id})
   }

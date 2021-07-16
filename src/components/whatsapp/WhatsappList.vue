@@ -5,6 +5,7 @@
   >
     <PhoneTitle
       :title="'Whatsapp'"
+      style="backgroundColor: #fff; color: black"
       @back="back"
     />
     <div 
@@ -14,12 +15,12 @@
         class="add-contato adds"
         @click.stop="onSelectContact()"
       >  
-        Adicionar Contato
+        Adicionar contato
       </div>
       <div
         class="add-grupo adds"
       >  
-        Novo Grupo
+        Novo grupo
       </div>
     </div>
     <div
@@ -150,30 +151,38 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['IntlString', 'useMouse', 'contacts', 'whatsapp', 'tchatChannels']),
+    ...mapGetters(['IntlString', 'useMouse', 'contacts', 'whatsapp', 'tchatChannels', 'tchatMessages']),
     messagesData: function () {
       let messages = this.whatsapp
       let contacts = this.contacts
       let groups = this.tchatChannels
-      console.log(groups)
+      let messagesgroups = this.tchatMessages
       let messGroup2 = groups.reduce((rv, x) => {
         if (rv[x['channel']] === undefined) {
           const data = {
             noRead: 0,
             lastMessage: 0,
+            time: new Date().getTime(),
             icon: x.icon,
+            letter: undefined,
+            number: x.channel,
+            puce: undefined,
+            unknowContact: true,
             display: x.channel
           }
-          console.log(rv[x['channel']])
+          this.setChannel(x.channel)
+          let groupMessage = messagesgroups.find(e => e.channel === x.channel)
+          if (groupMessage) {
+              if (groupMessage.channel === x.channel) {
+                data.lastMessage = groupMessage.time
+                data.keyDesc = groupMessage.message
+              }
+          } else {
+            data.lastMessage = 0
+            data.keyDesc = " "
+          }
           rv[x['channel']] = data
         }
-        // if (x.isRead === 0) {
-        //   rv[x['channel']].noRead += 1
-        // }
-        // if (x.time >= rv[x['channel']].lastMessage) {
-        //   rv[x['channel']].lastMessage = x.time
-        //   rv[x['channel']].keyDesc = x.message
-        // }
         return rv
       }, {})
       let messGroup = messages.reduce((rv, x) => {
@@ -209,7 +218,11 @@ export default {
       Object.keys(messGroup2).forEach(key => {
         mess2.push({
           display: messGroup2[key].display,
-          icon: messGroup2[key].icon
+          icon: messGroup2[key].icon,
+          lastMessage: messGroup2[key].lastMessage,
+          keyDesc: messGroup2[key].keyDesc,
+          puce: messGroup2[key].noRead,
+          number: key
         })
       })
       mess2.sort((a, b) => b.lastMessage - a.lastMessage)
@@ -228,6 +241,7 @@ export default {
         })
       })
       mess.sort((a, b) => b.lastMessage - a.lastMessage)
+      mess2.sort((a, b) => b.lastMessage - a.lastMessage)
       return [...mess,...mess2]
     },
     newMessageOption () {
@@ -248,6 +262,7 @@ export default {
     } else {
       this.currentSelect = -1
     }
+    this.tchatSetMessage
   },
   beforeDestroy: function () {
     this.$bus.$off('keyUpArrowDown', this.onDown)
@@ -256,13 +271,17 @@ export default {
     this.$bus.$off('keyUpEnter', this.onEnter)
   },
   methods: {
-    ...mapActions(['deleteMessagesNumber', 'deleteAllMessages', 'startCall']),
+    ...mapActions(['deleteMessagesNumber', 'deleteAllMessages', 'startCall', 'tchatSetChannel', 'tchatSendMessage']),
+    setChannel(channel) {
+      this.channel = channel
+      this.tchatSetChannel({channel})
+    },
     stylePuce(data) {
       data = data || {}
       if (data.icon !== undefined) {
         return {
           backgroundImage: `url(${data.icon})`,
-          backgroundSize: '120px' || 'cover', /* ou 120px Caso a Imagem buga */
+          backgroundSize: 'cover' || 'cover', /* ou 120px Caso a Imagem buga */
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           color: 'rgba(0,0,0,0)',
@@ -333,11 +352,14 @@ export default {
       this.scrollIntoViewIfNeeded()
     },
     formatTime(time) {
-      const d = new Date(time)
-      const hora = d.getHours();
-      const minuto = d.getMinutes();
-      const horas = hora + ":" + minuto;
-      return horas
+      if (time === 0) return
+      const time2 = new Date(time);
+      let minutes = time2.getMinutes();
+      minutes = minutes > 9 ? minutes : '0' + minutes
+      let heure = time2.getHours();
+      heure = heure > 9 ? heure : '0' + heure
+      let fulltime = heure + ':' + minutes
+      return fulltime
     },
     back: function () {
       if (this.disableList === true) return
@@ -362,11 +384,12 @@ export default {
   justify-content: space-between;
   padding: 0.6vw 1vw;
   border-bottom: 1px solid #e8e8e8;
+  font-weight: 600;
 }
 
 .adds {
   color: #0070c9;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -387,6 +410,7 @@ export default {
   font-weight: 300;
   font-size: 18px;
   cursor: pointer;
+  transition: all 1s ease-out;
 }
 
 .element::after{
@@ -405,7 +429,7 @@ export default {
 }
 
 .element.select, .element:hover {
-  background-color: #DDD;
+  background-color: #ebebeb;
 }
 
 .elem-pic {

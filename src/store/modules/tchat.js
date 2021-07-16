@@ -29,6 +29,9 @@ const actions = {
       dispatch('tchatGetMessagesChannel', { channel })
     }
   },
+  tchatSetMessage ({commit}, messagesChannel) {
+    commit('TCHAT_SET_MESSAGES', messagesChannel)
+  },
   tchatAddMessage ({ state, commit, getters }, { message }) {
     const channel = message.channel
     if (state.channels.find(e => e.channel === channel) !== undefined) {
@@ -98,24 +101,25 @@ export default {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  state.currentChannel = 'debug'
-  state.messagesChannel = JSON.parse('[{"channel":"teste","message":"teste","id":6,"time":1528671680000},{"channel":"teste","message":"Hop","id":5,"time":1528671153000}]')
-  for (let i = 0; i < 200; i++) {
-    state.messagesChannel.push(Object.assign({}, state.messagesChannel[0], { id: 100 + i, message: 'mess ' + i }))
-  }
+  state.currentChannel = 'alphastore'
+  state.messagesChannel = JSON.parse('[{"channel":"alphastore","receive":"alphastore","message":"Boa Noite a Todos","id":1,"owner":1,"time":1528671680000},{"channel":"alphastore","receive":"alphastore","message":"Hop outro teste","id":2,"owner":1,"time":1528671153000}]')
   state.messagesChannel.push({
-    message: 'Message sur plusieur ligne car il faut bien !!! Ok !',
-    id: 5000,
+    channel: 'alphastore',
+    receive:'alphastore',
+    message: 'A ta tudo certo sim kkkkkkkkkk',
+    id: 3, 
+    owner: 1,
     time: new Date().getTime()
   })
   state.messagesChannel.push({
-    message: 'Message sur plusieur ligne car il faut bien !!! Ok !',
-    id: 5000,
-    time: new Date().getTime()
-  })
-  state.messagesChannel.push({
-    message: 'Message sur plusieur ligne car il faut bien !!! Ok !',
-    id: 5000,
+    channel: 'alphastore',
+    receive:'alphastore',
+    message: 'Eae Beleza!',
+    id: 4, 
+    owner: 1,
     time: new Date(4567845).getTime()
   })
+  for (let i = 0; i < 3; i++) {
+    state.messagesChannel.push(Object.assign({}, state.messagesChannel[0], { channel: 'alphastore', receive:'alphastore', id: 5 + i, owner: 1, message: 'mess ' + i, time: new Date().getTime() }))
+  }
 }

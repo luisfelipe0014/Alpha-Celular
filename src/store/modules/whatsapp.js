@@ -21,8 +21,8 @@ const actions = {
     commit('SET_MESSAGES', whatsapp)
   },
   // eslint-disable-next-line no-unused-vars
-  sendMessage({commit}, {phoneNumber, message}) {
-    PhoneAPI.sendMessage(phoneNumber, message)
+  sendWhatsapp({commit}, {phoneNumber, group, message}) {
+    PhoneAPI.sendWhatsapp(phoneNumber, group, message)
   },
   // eslint-disable-next-line no-unused-vars
   deleteMessage({commit}, {id}) {
@@ -82,15 +82,15 @@ if (process.env.NODE_ENV !== 'production') {
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
-    {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
+    {id: 2, transmitter: numRandom, time, message: 'Abcdefghijklmnopqrstuvwxyz1234567889', isRead: 1, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
-    {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
+    {id: 3, transmitter: numRandom, time, message: 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', isRead: 1, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
-    {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 1, owner: 0},
+    {id: 2, transmitter: numRandom, time, message: 'Abcdefghijklmnopqrstuvwxyz1234567889?????????????????????????', isRead: 1, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 1, owner: 1},
-    {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},
+    {id: 4, transmitter: numRandom, time, message: 'Abcdefghijklmnopqrstuvwxyz1234567889', isRead: 1, owner: 0},
     {id: 2, transmitter: numRandom, time, message: 'Tu fait quoi?', isRead: 0, owner: 0},
     {id: 3, transmitter: numRandom, time, message: 'Oui est toi ?', isRead: 0, owner: 1},
     {id: 4, transmitter: numRandom, time, message: 'GPS : 244 - 123', isRead: 1, owner: 0},

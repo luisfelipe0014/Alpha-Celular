@@ -1,6 +1,6 @@
 <template>
   <div
-    style="width: 330px; height: 743px; backgroundColor: white"
+    style="width: 330px; height: 743px; backgroundColor: #f0f0f0"
     class="phone_app messages"
   >
     <PhoneTitle
@@ -20,11 +20,9 @@
       ref="copyTextarea"
       class="copyTextarea"
     />
-
-
     <div
       id="sms_list"
-      style="width: 326px; height: 678px; backgroundColor: white"
+      style="width: 326px; height: 678px; backgroundColor: #e5ddd5;"
       @contextmenu.prevent.stop="showOptions"
     >
       <div
@@ -37,27 +35,15 @@
       >
         <div class="sms_message_time">
           <h6
-            :class="{ sms_me : mess.owner === 1}"
+            :class="{ sms_me : compartNumber(mess) === 1}"
             class="name_other_sms_me"
           >
             {{ displayContact }}
           </h6>
-          <h6
-            :class="{ sms_me : mess.owner === 1}"
-            class="name_other_sms_other"
-            @click.stop="onActionMessage(mess)"
-          >
-            <timeago
-              style="font-weight: 500"
-              class="sms_time"
-              :since="mess.time"
-              :auto-update="20"
-            />
-          </h6>
         </div>
         <span
           class="sms_message sms_me"
-          :class="{ sms_other : mess.owner === 0}"
+          :class="{ sms_other : compartNumber(mess) === 0}"
           @click.stop="onActionMessage(mess)"
         >
 
@@ -72,43 +58,65 @@
             v-else
             @click.stop="onActionMessage(mess)"
           >{{ mess.message }}</span>
-
+          <h6
+            :class="{ sms_me : compartNumber(mess) === 1}"
+            class="name_other_sms_other"
+            @click.stop="onActionMessage(mess)"
+          >
+            {{ formatTime(mess.time) }}
+          </h6>
           <!--<span style="color: white; font-size: 17px; margin: 24px;" @click.stop="onActionMessage(mess)" ><timeago class="sms_time" :since='mess.time' :auto-update="20"></timeago></span>-->
         </span>
       </div>
     </div>
-
     <div
-      id="sms_write"
-      style="width: 306px;"
-      @contextmenu.prevent="showOptions"
+      class="sms_options"
     >
-      <label>
-        <input
-          v-model="message"
-          v-autofocus
-          type="text"
-          :placeholder="IntlString('APP_MESSAGE_PLACEHOLDER_ENTER_MESSAGE')"
-          @keyup.enter.prevent="send"
-        >
-      </label>
       <div
-        style="    font-size: 10px;"
-        class="sms_send"
-        @click.stop="send"
+        id="sms_write"
+        style="width: 245px;"
+        @contextmenu.prevent="showOptions"
       >
-        <svg
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+        <label>
+          <input
+            v-model="message"
+            v-autofocus
+            type="text"
+            :placeholder="IntlString('APP_MESSAGE_PLACEHOLDER_ENTER_MESSAGE')"
+            @keyup.enter.prevent="send"
+          >
+        </label>
+      </div>
+      <div class="options_text">
+        <div
+          style="    font-size: 10px;"
+          class="sms_send"
           @click.stop="send"
         >
-          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-          <path
-            d="M0 0h24v24H0z"
-            fill="none"
-          />
-        </svg>
+          <svg
+            class="svg-send" 
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            @click.stop="send"
+          >
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+          <svg 
+            class="svg-cam" 
+            viewBox="0 0 512 512"
+            @click.stop="takephotoo"
+          >
+            <path 
+              d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"
+              @click.stop="takephotoo"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   </div>
@@ -119,6 +127,8 @@ import {mapGetters, mapActions} from 'vuex'
 import {generateColorForStr, getBestFontColor} from '../../Utils'
 import PhoneTitle from './../PhoneTitle'
 import Modal from '@/components/Modal/index.js'
+
+var Isgroup = false
 
 export default {
   components: {
@@ -136,8 +146,19 @@ export default {
 
   },
   computed: {
-    ...mapGetters(['IntlString', 'whatsapp', 'contacts', 'useMouse', 'enableTakePhoto']),
+    ...mapGetters(['IntlString', 'whatsapp', 'tchatMessages', 'tchatChannels', 'myPhoneNumber', 'contacts', 'useMouse', 'enableTakePhoto']),
     messagesList() {
+      const c2 = this.tchatChannels.filter(c => c.channel === this.phoneNumber).sort((a, b) => a.time - b.time)
+      const c = this.tchatMessages.filter(c => c.channel === this.phoneNumber).sort((a, b) => a.time - b.time)
+      console.log(this.phoneNumber)
+      console.log(c2)
+      if (c.length !== 0) {
+        console.log("passou por aqui")
+        Isgroup = true
+        return c
+      }
+      console.log("passou por aqui no false")
+      Isgroup = false
       return this.whatsapp.filter(e => e.transmitter === this.phoneNumber).sort((a, b) => a.time - b.time)
     },
     displayContact() {
@@ -146,6 +167,7 @@ export default {
       }
       const c = this.contacts.find(c => c.number === this.phoneNumber)
       if (c !== undefined) {
+        
         return c.display
       }
       return this.phoneNumber
@@ -187,7 +209,11 @@ export default {
     this.$bus.$off('keyUpBackspace', this.onBackspace)
   },
   methods: {
-    ...mapActions(['setMessageRead', 'sendMessage', 'deleteMessage', 'startCall']),
+    ...mapActions(['setMessageRead', 'sendWhatsapp', 'deleteMessage', 'startCall', 'tchatSetChannel', 'tchatSendMessage']),
+    setChannel(channel) {
+      this.channel = channel
+      this.tchatSetChannel({channel})
+    },
     resetScroll() {
       this.$nextTick(() => {
         let elem = document.querySelector('#sms_list')
@@ -233,8 +259,9 @@ export default {
         this.$phoneAPI.getReponseText().then(data => {
           let message = data.text.trim()
           if (message !== '') {
-            this.sendMessage({
+            this.sendWhatsapp({
               phoneNumber: this.phoneNumber,
+              group: Isgroup,
               message
             })
           }
@@ -245,10 +272,25 @@ export default {
       const message = this.message.trim()
       if (message === '') return
       this.message = ''
-      this.sendMessage({
+      this.sendWhatsapp({
         phoneNumber: this.phoneNumber,
+        group: Isgroup,
         message
       })
+    },
+    takephotoo() {
+      const {url} = this.$phoneAPI.takePhoto()
+      if (url !== null && url !== undefined) {
+        this.sendWhatsapp({
+          phoneNumber: this.phoneNumber,
+          group: Isgroup,
+          message: url
+        })
+      }
+    },
+    compartNumber(mess) {
+      if (mess.transmitter === this.myPhoneNumber) return 1
+      return 0
     },
     isSMSImage(mess) {
       return /^https?:\/\/.*\.(png|jpg|jpeg|gif)/.test(mess.message)
@@ -372,8 +414,8 @@ export default {
       if (this.useMouse === true && document.activeElement.tagName !== 'BODY') return
       if (this.selectMessage !== -1) {
         this.selectMessage = -1
-      } else {
-        this.quit()
+      // } else {
+      //   this.quit()
       }
     },
     async showOptions() {
@@ -392,16 +434,18 @@ export default {
         }
         const data = await Modal.CreateModal({choix})
         if (data.id === 1) {
-          this.sendMessage({
+          this.sendWhatsapp({
             phoneNumber: this.phoneNumber,
+            group: Isgroup,
             message: '%pos%'
           })
         }
         if (data.id === 2) {
           const {url} = await this.$phoneAPI.takePhoto()
           if (url !== null && url !== undefined) {
-            this.sendMessage({
+            this.sendWhatsapp({
               phoneNumber: this.phoneNumber,
+              group: Isgroup,
               message: url
             })
           }
@@ -411,6 +455,16 @@ export default {
       } finally {
         this.ignoreControls = false
       }
+    },
+    formatTime(time) {
+      if (time === 0) return
+      const time2 = new Date(time);
+      let minutes = time2.getMinutes();
+      minutes = minutes > 9 ? minutes : '0' + minutes
+      let heure = time2.getHours();
+      heure = heure > 9 ? heure : '0' + heure
+      let fulltime = heure + ':' + minutes
+      return fulltime
     },
     onRight: function () {
       if (this.ignoreControls === true) return
@@ -448,12 +502,29 @@ export default {
   padding-bottom: 8px;
 }
 
+#sms_list:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 614px;
+  background: url(/static/img/whatsapp/back-zap.png);
+  background-repeat: no-repeat;
+  opacity: 0.06;
+}
+
 .name_other_sms_other {
-  margin-bottom: -9px;
-  margin-left: 42px;
-  font-size: 14px;
-  font-weight: 500;
-  color: lightgrey;
+  position: relative;
+  z-index: 10;
+  float: right;
+  margin: 21px 0 -5px 4px;
+  vertical-align: top;
+  display: inline-block;
+  height: 15px;
+  font-size: 11px;
+  line-height: 15px;
+  color: #00000073;
+  white-space: nowrap;
 }
 
 .name_other_sms_me {
@@ -468,6 +539,7 @@ export default {
 .sms {
   overflow: auto;
   zoom: 1;
+  position: sticky; /*Caso bug de posição remova isso*/
 }
 
 .sms-img {
@@ -498,22 +570,25 @@ export default {
 
 .sms_me {
   float: right;
-  background-color: #e9e9eb;
+  background-color: #dcf8c6;
   border-radius: 17px;
-  padding: 5px 10px;
-  max-width: 90%;
+  padding: 6px 7px 8px 9px;
+  line-height: 1;
+  max-width: 85%;
   margin-right: 5%;
   margin-top: 10px;
 }
 
 .sms_other {
-  background-color: #0b81ff;
-  border-radius: 17px;
+  background-color: #fff;
+  box-shadow: 0 1px .5px rgba(0,0,0,.13);
+  border-radius: 7.5px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: white;
+  color: #303030;
   float: left;
-  padding: 5px 10px;
-  max-width: 90%;
+  padding: 6px 7px 8px 9px;
+  line-height: 1;
+  max-width: 85%;
   margin-left: 5%;
   margin-top: 10px;
 }
@@ -550,7 +625,7 @@ export default {
   height: 100%;
 }
 
-.sms.select .sms_message, .sms_message:hover {
+/* .sms.select .sms_message, .sms_message:hover {
   background-color: #373B3C !important;
 
   color: #E4E3E2 !important;
@@ -559,42 +634,68 @@ export default {
 .sms.select .sms_message, .sms_message:hover {
   background-color: #373B3C !important;
   color: white !important;
-}
+} */
 
 .sms_message {
   word-wrap: break-word;
-  max-width: 80%;
+  white-space: pre-wrap;
+  font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;
   font-size: 24px;
 }
 
+.sms_options {
+  display: flex;
+  height: 55px;
+}
+
+.options_text {
+  display: flex;
+  align-items: center;
+  margin-left: -5px;
+}
+
 #sms_write {
-  height: 56px;
+  height: 30px;
   margin: 10px;
-  width: 380px;
-  background-color: #e9e9eb;
-  border-radius: 56px;
+  width: 245px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 21px;
 }
 
 #sms_write input {
-  height: 56px;
+  height: 30px;
   border: none;
   outline: none;
   font-size: 16px;
   margin-left: 14px;
   padding: 12px 5px;
+  color: #4a4a4a;
   background-color: rgba(236, 236, 241, 0)
 }
 
 .sms_send {
   float: right;
-  margin-right: 10px;
+  cursor: pointer;
+  /* margin-right: 10px; */
 }
 
 .sms_send svg {
-  margin: 8px;
-  width: 36px;
-  height: 36px;
+  margin: 2px;
+  width: 22px;
+  height: 22px;
+}
+
+.sms_send .svg-send {
+  margin: 2px;
   fill: #C0C0C0;
+  background: #0070c9;
+  border-radius: 50%;
+  padding: 4px;
+}
+.sms_send .svg-cam {
+  cursor: pointer;
+  fill: #0070c9 !important;
 }
 
 .copyTextarea {

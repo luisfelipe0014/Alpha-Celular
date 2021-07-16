@@ -40,8 +40,32 @@
   src: url("../static/fonts/sanfranciscodisplay-bold-webfont.woff");
 }
 
+// AQUI FONT DO IPHONE!!!!!!!!!!!!!!!!!!!!
+
+@font-face {
+  font-family: "SF Pro Text Regular";
+  font-style:normal;
+	font-weight:400;
+  src: url("../static/fonts/sf-pro-text_regular.woff2");
+}
+
+@font-face {
+	font-family:'SF Pro Text Italic';
+	font-style:italic;
+	font-weight:400;
+  src: url("../static/fonts/sf-pro-text_regular-italic.woff2");
+}
+
+@font-face {
+  font-family: "SF Pro Text Semi-Bold";
+	font-style:normal;
+	font-weight:600;
+  src: url("../static/fonts/sf-pro-text_semibold.woff2");
+}
+
+
 * {
-  font-family: "San Francisco", "Helvetica Neue", sans-serif
+  font-family: 'SF Pro Text Regular', "San Francisco", "Helvetica Neue", sans-serif
 }
 
 h1 { font-weight: 700; }
@@ -70,19 +94,20 @@ body {
 }
 
 .phone_title {
-  font-weight: 300;
   margin-top: 4px;
-  color: black;
-  background-color: #e9e9eb;
-  line-height: 52px;
-  font-size: 24px;
-  padding-left: 64px;
+  text-align: center;
+  color: #000;
+  background-color: #f6f6f6;
+  line-height: 45px;
+  font-size: 16px;
+  font-family: 'SF Pro Text Regular';
+  font-weight: 700;
+  // font-family: "SF Pro Text Semi-Bold","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 
-.phone_title .btn-back {
-  width: 42px;
-  height: 42px;
-  color: #5A5A5A;
+.phone_title .voltar {
+  color: #0071e3;
+  font-size: 13px;
   line-height: 42px;
   border-radius: 50%;
   background-color: transparent;
@@ -90,16 +115,36 @@ body {
   margin: 0;
   padding: 0;
   position: absolute;
-  left: 16px;
-  top: 35px;
-
+  left: 28px;
+  top: 30px;
   outline: none;
   text-shadow: none;
   text-align: center;
+  font-family: "SF Pro Text Semi-Bold";
 }
 
-.phone_title .btn-back:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+.phone_title .btn-back {
+  width: 73px;
+  padding-right: 17px;
+  color: #0071e3;
+  font-size: 18px;
+  line-height: 42px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding-right: 29px;
+  position: absolute;
+  left: -4px;
+  top: 29.5px;
+  cursor: pointer;
+  outline: none;
+  text-shadow: none;
+  text-align: center;
+  transition: all 1s ease-out;
+}
+
+.phone_title .btn-back:hover, .phone_title .voltar:hover, .phone_title .btn-back:hover .voltar, .voltar:hover .phone_title .btn-back {
   color: #5A5A5A;
 }
 

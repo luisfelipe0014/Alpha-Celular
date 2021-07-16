@@ -12,6 +12,10 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import VueUnits from 'vue-units';
 import {
   faAngleLeft,
+  faSignal,
+  faWifi,
+  faBatteryThreeQuarters,
+  faChevronLeft,
   faComment,
   faLocationArrow,
   faUndo,
@@ -61,9 +65,12 @@ import {
 
 import { faTwitter }  from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-
 library.add(
   faAngleLeft,
+  faSignal,
+  faWifi,
+  faBatteryThreeQuarters,
+  faChevronLeft,
   faComment,
   faLocationArrow,
   faUndo,

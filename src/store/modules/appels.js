@@ -27,7 +27,7 @@ const getters = {
       return state.appelsInfo.receiver_num
     }
     if (state.appelsInfo.hidden === true) {
-      return '###-####'
+      return '###-###'
     }
     return state.appelsInfo.transmitter_num
   },
@@ -103,27 +103,27 @@ if (process.env.NODE_ENV !== 'production') {
   state.appelsHistorique = [{
     "id": 1,
     "incoming": 0,
-    "num": "336-4557",
-    "owner": "336-4557",
+    "num": "336-457",
+    "owner": "336-457",
     "accepts": 0,
     "time": 1528374759000
-  }, {"id": 2, "incoming": 0, "num": "police", "owner": "336-4557", "accepts": 1, "time": 1528374787000}, {
+  }, {"id": 2, "incoming": 0, "num": "police", "owner": "336-457", "accepts": 1, "time": 1528374787000}, {
     "id": 3,
     "incoming": 1,
-    "num": "555-5555",
-    "owner": "336-4557",
+    "num": "555-555",
+    "owner": "336-457",
     "accepts": 1,
     "time": 1528374566000
-  }, {"id": 4, "incoming": 1, "num": "555-5555", "owner": "336-4557", "accepts": 0, "time": 1528371227000}]
+  }, {"id": 4, "incoming": 1, "num": "555-555", "owner": "336-457", "accepts": 0, "time": 1528371227000}]
   state.appelsInfo = {
     initiator: false,
     id: 5,
     transmitter_src: 5,
-    // transmitter_num: '###-####',
-    transmitter_num: '336-4557',
+    // transmitter_num: '###-###',
+    transmitter_num: '336-457',
     receiver_src: undefined,
-    // receiver_num: '336-4557',
-    receiver_num: '###-####',
+    // receiver_num: '336-457',
+    receiver_num: '###-###',
     is_valid: 0,
     is_accepts: 0,
     hidden: 0

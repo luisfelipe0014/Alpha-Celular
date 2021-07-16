@@ -43,7 +43,7 @@
   "fileUploadService_Url": "https://discord.com/api/webhooks/840315231145426976/qMZA7XhJjk9pEHi_Qt8KmWk25BYXQnnTX8N_teFOvLNs_Zi91EsDGeIg4EgRV_gNF5CR",
   "fileUploadService_Field": "files[]",
   "background": {
-    "Padrão": "padrao.png",
+    "Padrao": "padrao.jpg",
     "Praia": "back000.jpg",
     "Deserto Branco": "back001.jpg",
     "Palmeiras": "back002.jpg",
@@ -54,8 +54,8 @@
     "Custom URL": "URL"
   },
   "background_default": {
-    "Padrão": "Padrão",
-    "value": "padrao.png"
+    "Padrão": "Padrao",
+    "value": "padrao.jpg"
   },
   "coque": {
     "Gray": "grey.png",

@@ -4,19 +4,27 @@
     :style="style"
     :class="{'hasInfoBare': showInfoBare}"
   >
-    <InfoBare v-if="showInfoBare" />
+    <InfoBare 
+      v-if="showInfoBare" 
+      style="backgroundColor: #f6f6f6; color: #000"
+    />
     <div
       class="phone_title"
       :style="{
         backgroundColor: backgroundColor,
       }"
     >
+      <div
+        class="voltar"
+      >
+        Voltar
+      </div>
       <button
         class="btn-back"
         @click.stop="back"
       >
         <FontAwesomeIcon
-          :icon="['fas', 'angle-left']"
+          :icon="['fas', 'chevron-left']"
           @click.stop="back"
         />
       </button>
@@ -49,7 +57,7 @@ export default {
     style() {
       return {
         backgroundColor: this.backgroundColor,
-        color: this.color || '#FFF'
+        color: this.color || '#000'
       }
     }
   },

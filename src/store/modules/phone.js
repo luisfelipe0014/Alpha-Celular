@@ -6,7 +6,7 @@ const state = {
   notification: false,
   notificationInfo: [],
   tempoHide: false,
-  myPhoneNumber: '###-####',
+  myPhoneNumber: '###-###',
   myID: 0,
   background: JSON.parse(window.localStorage['gc_background'] || null),
   coque: JSON.parse(window.localStorage['gc_coque'] || null),
@@ -44,8 +44,8 @@ const getters = {
         return config.background_default
       }
       return {
-        label: 'Oscuridad',
-        value: 'oscuridad.jpg'
+        label: 'Padrao',
+        value: 'padrao.jpg'
       }
     }
     return background

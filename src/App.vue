@@ -160,9 +160,15 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
+router-view {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes scale-up-center{0%{-webkit-transform:scale(.5);transform:scale(.5);opacity: 0;}100%{-webkit-transform:scale(1);transform:scale(1);opacity: 1;}}
 
 .getin-phone {
-  -webkit-animation: getin-phone 1s;
+  -webkit-animation: getin-phone 2s;
   top: 0;
   right: 0;
   bottom: 0;
@@ -173,14 +179,16 @@ body {
   0% {
     position: absolute;
     transform: translate3d(0, 100vh, 0);
+    opacity: 0;
   }
   100% {
     position: absolute;
     transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 .getout-phone {
-  -webkit-animation: getout-phone 1s forwards;
+  -webkit-animation: getout-phone 2s forwards;
   top: 0;
   right: 0;
   bottom: 0;
