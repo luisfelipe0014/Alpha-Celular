@@ -4,8 +4,8 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, 'E:/[FIVEM]/[BASES]/[BASEnova]/server-data/resources/[gcphone]/gcphone/html/index.html'),
-    assetsRoot: path.resolve(__dirname, 'E:/[FIVEM]/[BASES]/[BASEnova]/server-data/resources/[gcphone]/gcphone/html'),
+    index: path.resolve(__dirname, 'E:/[FIVEM]/[BASES]/[BASE]/Server-data/resources/[Celular]/gcphone/html/index.html'),
+    assetsRoot: path.resolve(__dirname, 'E:/[FIVEM]/[BASES]/[BASE]/Server-data/resources/[Celular]/gcphone/html'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/html/',
     productionSourceMap: true,

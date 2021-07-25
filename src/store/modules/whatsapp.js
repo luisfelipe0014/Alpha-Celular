@@ -22,6 +22,7 @@ const actions = {
   },
   // eslint-disable-next-line no-unused-vars
   sendWhatsapp({commit}, {phoneNumber, group, message}) {
+    console.log(phoneNumber, group, message)
     PhoneAPI.sendWhatsapp(phoneNumber, group, message)
   },
   // eslint-disable-next-line no-unused-vars

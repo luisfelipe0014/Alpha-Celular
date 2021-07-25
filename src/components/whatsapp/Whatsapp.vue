@@ -3,11 +3,37 @@
     style="width: 330px; height: 743px; backgroundColor: #f0f0f0"
     class="phone_app messages"
   >
-    <PhoneTitle
-      :title="displayContact"
-      style="backgroundColor: #F1F1F1; color: black"
-      @back="quit"
-    /> <!--:title="displayContact" :backgroundColor="color" -->
+    <InfoBare 
+      style="color: #000; backgroundColor: #f0f0f0"
+    />
+    <div
+      class="whatsTitle"
+    >
+      <div class="voltar-perfil">
+        <FontAwesomeIcon
+          :icon="['fas', 'chevron-left']"
+          @click.stop="quit"
+        />
+      </div>
+      <div class="image-perfil">
+        <img :src="iconContact">
+      </div>
+      <div class="nome-perfil">
+        {{ displayContact }}
+      </div>
+      <div class="icons-action">
+        <svg 
+          width="30px"
+          height="30px" 
+          viewBox="0 0 512 512"
+          @click.stop="startcallZap"
+        >
+          <path 
+            d="M415.9 335.5c-14.6-15-56.1-43.1-83.3-43.1-6.3 0-11.8 1.4-16.3 4.3-13.3 8.5-23.9 15.1-29 15.1-2.8 0-5.8-2.5-12.4-8.2l-1.1-1c-18.3-15.9-22.2-20-29.3-27.4l-1.8-1.9c-1.3-1.3-2.4-2.5-3.5-3.6-6.2-6.4-10.7-11-26.6-29l-.7-.8c-7.6-8.6-12.6-14.2-12.9-18.3-.3-4 3.2-10.5 12.1-22.6 10.8-14.6 11.2-32.6 1.3-53.5-7.9-16.5-20.8-32.3-32.2-46.2l-1-1.2c-9.8-12-21.2-18-33.9-18-14.1 0-25.8 7.6-32 11.6-.5.3-1 .7-1.5 1-13.9 8.8-24 20.9-27.8 33.2-5.7 18.5-9.5 42.5 17.8 92.4 23.6 43.2 45 72.2 79 107.1 32 32.8 46.2 43.4 78 66.4 35.4 25.6 69.4 40.3 93.2 40.3 22.1 0 39.5 0 64.3-29.9 26-31.4 15.2-50.6-.4-66.7zm-11.5 55.9c-20 24.2-31.5 24.2-52.3 24.2-20.3 0-51.8-14-84.2-37.3-31-22.4-44.8-32.7-75.9-64.6-32.9-33.7-53.6-61.8-76.4-103.5-24.1-44.1-21.4-63.4-16.5-79.3 2.6-8.5 10.4-17.6 21-24.2.5-.3 1-.7 1.6-1 5.3-3.4 14.1-9.1 23.7-9.1 8 0 15.1 4 21.9 12.3l1 1.2c25.5 31.2 45.4 58.8 30.4 79.2-10.6 14.3-16.2 24-15.3 34 .8 9.7 7.3 17 17.1 28l.7.8c16.1 18.2 20.7 23 27.1 29.5 1.1 1.1 2.2 2.3 3.5 3.6l1.8 1.9c7.4 7.7 11.5 11.9 30.3 28.4l1.1 1c8 7 13.9 12.1 22.5 12.1 8.9 0 18.7-5.6 37.3-17.5 1.9-1.2 4.6-1.9 8-1.9 21.7 0 59.1 24.8 72.2 38.3 12 12.2 18 21.4-.6 43.9z"
+          />
+        </svg>
+      </div>
+    </div>
     <div
       v-if="imgZoom !== undefined"
       class="img-fullscreen"
@@ -59,7 +85,6 @@
             @click.stop="onActionMessage(mess)"
           >{{ mess.message }}</span>
           <h6
-            :class="{ sms_me : compartNumber(mess) === 1}"
             class="name_other_sms_other"
             @click.stop="onActionMessage(mess)"
           >
@@ -93,17 +118,14 @@
           class="sms_send"
           @click.stop="send"
         >
-          <svg
-            class="svg-send" 
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
+          <svg 
+            class="svg-send"
+            style="width: 23px; height: 23px;" 
+            viewBox="0 0 24 24" 
             @click.stop="send"
           >
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
+            <path 
+              d="M7.75778 6.14799C6.84443 5.77187 6.0833 5.45843 5.49196 5.30702C4.91915 5.16036 4.18085 5.07761 3.63766 5.62862C3.09447 6.17962 3.18776 6.91666 3.34259 7.48732C3.50242 8.07644 3.8267 8.83302 4.21583 9.7409L4.86259 11.25H10C10.4142 11.25 10.75 11.5858 10.75 12C10.75 12.4142 10.4142 12.75 10 12.75H4.8626L4.21583 14.2591C3.8267 15.167 3.50242 15.9236 3.34259 16.5127C3.18776 17.0833 3.09447 17.8204 3.63766 18.3714C4.18085 18.9224 4.91915 18.8396 5.49196 18.693C6.0833 18.5416 6.84443 18.2281 7.75777 17.852L19.1997 13.1406C19.4053 13.0561 19.6279 12.9645 19.7941 12.867C19.944 12.779 20.3434 12.5192 20.3434 12C20.3434 11.4808 19.944 11.221 19.7941 11.133C19.6279 11.0355 19.4053 10.9439 19.1997 10.8594L7.75778 6.14799Z" 
             />
           </svg>
           <svg 
@@ -125,14 +147,14 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import {generateColorForStr, getBestFontColor} from '../../Utils'
-import PhoneTitle from './../PhoneTitle'
 import Modal from '@/components/Modal/index.js'
+import InfoBare from '../InfoBare'
 
 var Isgroup = false
 
 export default {
   components: {
-    PhoneTitle
+    InfoBare
   },
   data() {
     return {
@@ -140,6 +162,7 @@ export default {
       selectMessage: -1,
       display: '',
       phoneNumber: '',
+      iconPerfil: undefined,
       imgZoom: undefined,
       message: ''
     }
@@ -148,18 +171,26 @@ export default {
   computed: {
     ...mapGetters(['IntlString', 'whatsapp', 'tchatMessages', 'tchatChannels', 'myPhoneNumber', 'contacts', 'useMouse', 'enableTakePhoto']),
     messagesList() {
-      const c2 = this.tchatChannels.filter(c => c.channel === this.phoneNumber).sort((a, b) => a.time - b.time)
       const c = this.tchatMessages.filter(c => c.channel === this.phoneNumber).sort((a, b) => a.time - b.time)
-      console.log(this.phoneNumber)
-      console.log(c2)
+      const m = this.whatsapp.filter(e => e.transmitter === this.phoneNumber).sort((a, b) => a.time - b.time)
+      // const c2 = this.tchatChannels.filter(c => c.channel === this.phoneNumber).sort((a, b) => a.time - b.time)
       if (c.length !== 0) {
-        console.log("passou por aqui")
         Isgroup = true
         return c
       }
-      console.log("passou por aqui no false")
       Isgroup = false
-      return this.whatsapp.filter(e => e.transmitter === this.phoneNumber).sort((a, b) => a.time - b.time)
+      return m
+    },
+    iconContact() {
+      const c = this.contacts.find(c => c.number === this.phoneNumber)
+      if (this.iconPerfil != undefined) {
+        return this.iconPerfil
+      }
+      if (c != undefined) {
+        console.log(c.icon)
+        return c.icon
+      }
+      return "/html/static/img/icons_app/perfilsemfoto.png"
     },
     displayContact() {
       if (this.display !== undefined) {
@@ -271,12 +302,18 @@ export default {
     send() {
       const message = this.message.trim()
       if (message === '') return
+      console.log("bdaaaakkk")
       this.message = ''
       this.sendWhatsapp({
         phoneNumber: this.phoneNumber,
         group: Isgroup,
         message
       })
+    },
+    startcallZap() {
+      const number = this.phoneNumber
+      console.log(number)
+      this.startCall({numero: number})
     },
     takephotoo() {
       const {url} = this.$phoneAPI.takePhoto()
@@ -289,6 +326,7 @@ export default {
       }
     },
     compartNumber(mess) {
+      if (mess.owner !== undefined) return mess.owner
       if (mess.transmitter === this.myPhoneNumber) return 1
       return 0
     },
@@ -487,6 +525,57 @@ export default {
   height: calc(100% - 20px);
   background-color: #DDD;
 }
+.whatsTitle {
+  height: 53px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.voltar-perfil {
+  margin-left: 12px;
+  text-align: center;
+  font-size: 20px;
+  color: #0070c9;
+  cursor: pointer;
+}
+
+.image-perfil {
+  margin-left: 7px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-weight: 200;
+}
+
+.image-perfil img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.nome-perfil {
+  font-size: 18px;
+  margin-left: 6px;
+  margin-bottom: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  font-weight: bold;
+  color: #000;
+}
+
+.icons-action {
+  margin-right: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.icons-action svg {
+  fill: #0070c9;
+  cursor: pointer;
+}
 
 #sms_contact {
   background-color: #4CAF50;
@@ -571,7 +660,7 @@ export default {
 .sms_me {
   float: right;
   background-color: #dcf8c6;
-  border-radius: 17px;
+  border-radius: 7.5px;
   padding: 6px 7px 8px 9px;
   line-height: 1;
   max-width: 85%;
@@ -665,11 +754,12 @@ export default {
 
 #sms_write input {
   height: 30px;
+  width: 223px;
   border: none;
   outline: none;
   font-size: 16px;
-  margin-left: 14px;
-  padding: 12px 5px;
+  margin-left: 10px;
+  padding: 12px 0px;
   color: #4a4a4a;
   background-color: rgba(236, 236, 241, 0)
 }
@@ -688,10 +778,10 @@ export default {
 
 .sms_send .svg-send {
   margin: 2px;
-  fill: #C0C0C0;
-  background: #0070c9;
+  fill: #0070c9;
+  /* background: #0070c9; */
   border-radius: 50%;
-  padding: 4px;
+  /* padding: 4px; */
 }
 .sms_send .svg-cam {
   cursor: pointer;

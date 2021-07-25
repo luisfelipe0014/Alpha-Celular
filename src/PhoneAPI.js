@@ -48,11 +48,20 @@ class PhoneAPI {
     }
   }
 
-  convertEmoji(text) {
+  convertEmoji (text) {
     for (const e of keyEmoji) {
       text = text.replace(new RegExp(`:${e}:`, 'g'), emoji[e])
     }
     return text
+  }
+
+  sendGenericError (data) {
+    this.log(`Sending Error: ${data}`)
+    Vue.notify({
+      title: 'Error',
+      message: data,
+      backgroundColor: '#e0245e80'
+    })
   }
 
   // === Gestion des messages
